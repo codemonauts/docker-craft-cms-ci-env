@@ -1,18 +1,20 @@
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 
 ENV NODE_VERSION "12"
 ENV NVM_VERSION "v0.35.2"
 ENV NVM_DIR /root/.nvm
 LABEL MAINTAINER felix@codemonauts.com
 
+RUN ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 RUN apt-get update &&\
     apt-get install -y --no-install-recommends \
     apt-transport-https \ 
     ca-certificates \
     curl \
     git \
-    php7.0-cli \
-    php7.0-zip \
+    gnupg \
+    php7.2-cli \
+    php7.2-zip \
     unzip \
     zip &&\
     rm -rf /var/lib/apt/lists
