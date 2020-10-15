@@ -1,9 +1,9 @@
 # docker-craft-cms-ci-env
 ![docker pulls badge](https://img.shields.io/docker/pulls/codemonauts/craft-cms-ci-env)
 
-This image is intendet to use in a CI/CD pipeline to build CraftCMS websites. It contains:
-  * PHP 7.0
-  * compose
+This image is intendet to use in a CI/CD pipeline to build CraftCMS websites (or other PHP applications). It contains:
+  * PHP 7.4
+  * composer
   * NodeJS 12
   * npm
   * gulp

@@ -1,20 +1,27 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 
 ENV NODE_VERSION "12"
 ENV NVM_VERSION "v0.35.2"
 ENV NVM_DIR /root/.nvm
 LABEL MAINTAINER felix@codemonauts.com
 
-RUN ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+# Install andrej ppa for modern PHP versions
 RUN apt-get update &&\
-    apt-get install -y --no-install-recommends \
+    apt-get install -y --no-install-recommends software-properties-common &&\
+    add-apt-repository ppa:ondrej/php &&\
+    apt-get update
+
+RUN ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+
+RUN apt-get install -y --no-install-recommends \
     apt-transport-https \ 
     ca-certificates \
     curl \
     git \
     gnupg \
-    php7.2-cli \
-    php7.2-zip \
+    php7.4-cli \
+    php7.4-zip \
+    python2-minimal \
     unzip \
     zip &&\
     rm -rf /var/lib/apt/lists
@@ -26,7 +33,7 @@ RUN cd /tmp &&\
 
 # Install NodeJS
 RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - &&\
-    echo 'deb https://deb.nodesource.com/node_12.x bionic main' > /etc/apt/sources.list.d/nodesource.list &&\
+    echo 'deb https://deb.nodesource.com/node_12.x focal main' > /etc/apt/sources.list.d/nodesource.list &&\
     apt-get update &&\
     apt-get install -y nodejs
 
