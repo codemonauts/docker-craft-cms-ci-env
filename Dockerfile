@@ -1,8 +1,9 @@
 FROM ubuntu:focal
 
-ENV NODE_VERSION "12"
-ENV NVM_VERSION "v0.35.2"
-ENV NVM_DIR /root/.nvm
+ENV NODE_VERSION "node_12.x"
+ENV DISTRO "focal"
+ENV COMPOSER_VERSION "2.1.12"
+
 LABEL MAINTAINER felix@codemonauts.com
 
 # Install andrej ppa for modern PHP versions
@@ -23,17 +24,17 @@ RUN apt-get install -y --no-install-recommends \
     php7.4-zip \
     python2-minimal \
     unzip \
+    wget \
     zip &&\
     rm -rf /var/lib/apt/lists
 
-# Install composer
-RUN cd /tmp &&\
-    curl --silent --show-error https://getcomposer.org/installer | php &&\
-    mv composer.phar /usr/local/bin/composer
+# Get Composer
+RUN wget "https://getcomposer.org/download/$COMPOSER_VERSION/composer.phar" -O /usr/local/bin/composer &&\
+    chmod +x /usr/local/bin/composer
 
 # Install NodeJS
 RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - &&\
-    echo 'deb https://deb.nodesource.com/node_12.x focal main' > /etc/apt/sources.list.d/nodesource.list &&\
+    echo "deb https://deb.nodesource.com/$NODE_VERSION $DISTRO main" > /etc/apt/sources.list.d/nodesource.list &&\
     apt-get update &&\
     apt-get install -y nodejs
 
