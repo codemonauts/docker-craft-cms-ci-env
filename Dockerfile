@@ -8,6 +8,7 @@ LABEL MAINTAINER felix@codemonauts.com
 
 # Install andrej ppa for modern PHP versions
 RUN apt-get update &&\
+    apt-get upgrade -y &&\
     apt-get install -y --no-install-recommends software-properties-common &&\
     add-apt-repository ppa:ondrej/php &&\
     apt-get update
