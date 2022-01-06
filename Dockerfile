@@ -2,7 +2,7 @@ FROM ubuntu:focal
 
 ENV NODE_VERSION "node_12.x"
 ENV DISTRO "focal"
-ENV COMPOSER_VERSION "2.1.12"
+ENV COMPOSER_VERSION "2.2.3"
 
 LABEL MAINTAINER felix@codemonauts.com
 
