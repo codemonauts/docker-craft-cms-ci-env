@@ -2,11 +2,10 @@
 ![docker pulls badge](https://img.shields.io/docker/pulls/codemonauts/craft-cms-ci-env)
 
 This image is intendet to use in a CI/CD pipeline to build CraftCMS websites (or other PHP applications). It contains:
-  * PHP 7.4
+  * PHP 8.1
   * composer
-  * NodeJS 12
+  * NodeJS 18
   * npm
-  * gulp
 
 ## Example usage with Gitlab CI
 ```yaml
