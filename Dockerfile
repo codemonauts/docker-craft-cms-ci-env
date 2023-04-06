@@ -1,8 +1,8 @@
 FROM ubuntu:focal
 
-ENV NODE_VERSION "node_12.x"
+ENV NODE_VERSION "node_18.x"
 ENV DISTRO "focal"
-ENV COMPOSER_VERSION "2.2.3"
+ENV COMPOSER_VERSION "2.5.5"
 
 LABEL MAINTAINER felix@codemonauts.com
 
@@ -21,8 +21,8 @@ RUN apt-get install -y --no-install-recommends \
     curl \
     git \
     gnupg \
-    php7.4-cli \
-    php7.4-zip \
+    php8.1-cli \
+    php8.1-zip \
     python2-minimal \
     unzip \
     wget \
