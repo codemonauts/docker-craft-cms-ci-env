@@ -17,8 +17,8 @@ build:
       - package.zip
   script:
     - cd src/
-    - npm install
-    - gulp build --env=produciton
+    - npm ci
+    - npm run build
     - cd ..
     - composer install --ignore-platform-reqs --no-ansi --no-dev --no-interaction --no-progress --no-scripts --optimize-autoloader
     - zip -qr package.zip .
